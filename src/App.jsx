@@ -44,6 +44,10 @@ function App() {
   const handleCancelEdit = () => {
     setEditingIndex(null);
   };
+  //注文を削除
+  const handleDeleteOrder = (indexToDelete) => {
+  setOrders((prev) => prev.filter((_, i) => i !== indexToDelete));
+};
 
   return (
     <div className="max-w-md mx-auto mt-4 space-y-6">
@@ -58,41 +62,44 @@ function App() {
       <TimerManager orders={orders} />
 
       {/* 注文リスト表示 */}
-      <div className="p-4 border rounded-md bg-white shadow">
-        <h2 className="text-lg font-bold mb-2">🧾 登録済みの注文</h2>
-        {orders.length === 0 ? (
-          <p className="text-gray-500">まだ注文がありません</p>
-        ) : (
-          orders.map((order, index) => (
-            <div
-              key={index}
-              className="mb-4 border-b pb-2 flex flex-col gap-1 relative"
-            >
-              <p>🪑 席番号: {order.seatNumber}</p>
-              <p>🍽 コース: {order.courseName || "なし"}</p>
-              <p>📝 備考: {order.memo || "なし"}</p>
-              <ul className="pl-4 mt-1 list-disc text-sm">
-                {Object.entries(order.orderItems).map(([item, count]) => (
-                  <li key={item}>
-                    {item} × {count}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-gray-500 mt-1">
-                登録時間: {new Date(order.timestamp).toLocaleTimeString()}
-              </p>
+      {orders.map((order, index) => (
+        <div
+          key={index}
+          className="mb-4 border-b pb-2 flex flex-col gap-1 relative"
+        >
+          <p>🪑 席番号: {order.seatNumber}</p>
+          <p>🍽 コース: {order.courseName || "なし"}</p>
+          <p>📝 備考: {order.memo || "なし"}</p>
+          <ul className="pl-4 mt-1 list-disc text-sm">
+            {Object.entries(order.orderItems).map(([item, count]) => (
+              <li key={item}>
+                {item} × {count}
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-gray-500 mt-1">
+            登録時間: {new Date(order.timestamp).toLocaleTimeString()}
+          </p>
 
-              {/* 編集ボタン */}
-              <button
-                onClick={() => handleEditOrder(index)}
-                className="absolute right-2 top-2 text-blue-600 text-sm underline"
-              >
-                編集
-              </button>
-            </div>
-          ))
-        )}
-      </div>
+          {/* 編集ボタン */}
+          <button
+            onClick={() => handleEditOrder(index)}
+            className="absolute right-2 top-2 text-blue-600 text-sm underline"
+          >
+            編集
+          </button>
+
+          {/* 削除ボタン */}
+          <button
+            onClick={() =>   {if (window.confirm("この席の注文を削除しますか？")) {
+                              handleDeleteOrder(index);}}}
+            className="text-sm text-red-500 underline mt-1 self-start"
+          >
+            この席の注文を削除
+          </button>
+        </div>
+      ))}
+
     </div>
   );
 }
