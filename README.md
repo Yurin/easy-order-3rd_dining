@@ -1,12 +1,72 @@
-# React + Vite
+# easy-order-3rd_dining
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🍽️ 飲食店のオーダー取りを効率化する、ハンディターミナル風のWebアプリケーションです。  
+React + Tailwind CSS で構築し、オプション選択やコースタイマー通知など、現場での実用を意識した設計になっています。
 
-Currently, two official plugins are available:
+🍽️ A handy web application for restaurant staff to quickly take table orders, track course meals, and notify the kitchen at the right timing.  
+Built with **React** and **Tailwind CSS**, optimized for mobile and real-world use.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ 主な機能 / Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ 席番号・メニュー・個数をタップで簡単入力 / Easy order input by tapping
+- ✅ ドリンク等のオプション選択（例：コーヒーのHOT/ICE）/ Option selection (e.g., HOT/ICE)
+- ✅ コース料理の進行に合わせたファイアータイマー通知 / Timer-based course progress notification
+- ✅ オーダー内容の編集・保存 / Order editing and saving
+- ✅ Tailwindによるモバイル向けUI / Mobile-friendly UI with Tailwind
+- ✅ データはローカル保存（localStorage）/ Local data persistence
+
+---
+
+## 📸 スクリーンショット / Screenshots
+
+![スクリーンショット1](./screenshot1.png)  
+![スクリーンショット2](./screenshot2.png)
+
+---
+
+## 🛠 技術スタック / Tech Stack
+
+| 技術 / Tech | 内容 / Description |
+|-------------|--------------------|
+| Frontend    | React (Vite), JavaScript |
+| UI          | Tailwind CSS |
+| 状態管理     | useState, useEffect |
+| 保存        | localStorage |
+| その他      | Git, GitHub |
+
+---
+
+## 🚀 セットアップ方法 / Getting Started
+
+```bash
+git clone https://github.com/Yurin/easy-order-3rd_dining.git
+cd easy-order-3rd_dining
+npm install
+npm run dev
+
+
+```
+
+## 📦 フォルダ構成
+```
+src/
+├── App.jsx
+├── components/
+│   ├── OrderForm.jsx
+│   └── TimerManager.jsx
+├── data/
+│   ├── menudata.js
+│   └── courses.js
+└── index.css
+
+```
+
+## 👩‍💻 作者
+名前：Yuri Nakano
+
+GitHub：Yurin
+
+## 📝 ライセンス
+MIT License
